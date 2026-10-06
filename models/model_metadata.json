@@ -1,0 +1,14 @@
+{
+  "category_model": {
+    "file": "category_model.joblib",
+    "algorithm": "TF-IDF + Logistic Regression",
+    "classes": ["compute", "database", "network", "security", "storage"],
+    "sha256": "c5134b5332267fde1306d71dd6c421bf04a4156dbb8d889991767f16b78e8b1c"
+  },
+  "severity_model": {
+    "file": "severity_model.joblib",
+    "algorithm": "TF-IDF + Logistic Regression",
+    "classes": ["P1", "P2", "P3", "P4"],
+    "sha256": "a36b0b54619f845f0426f1b0ee08aeb0fa868c29048754e78a24ffa3868b7fd4"
+  }
+}
