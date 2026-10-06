@@ -1,0 +1,45 @@
+{
+  "Comment": "AI-enhanced incident classification and routing",
+  "StartAt": "ClassifyIncident",
+  "States": {
+    "ClassifyIncident": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "ai-incident-classifier",
+        "Payload.$": "$"
+      },
+      "ResultPath": "$.classification",
+      "Next": "HumanReviewRequired"
+    },
+    "HumanReviewRequired": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.classification.Payload.requires_human_review",
+          "BooleanEquals": true,
+          "Next": "NotifyOperationsLead"
+        }
+      ],
+      "Default": "RouteToTeam"
+    },
+    "NotifyOperationsLead": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "${HumanReviewTopicArn}",
+        "Message.$": "$.classification.Payload"
+      },
+      "End": true
+    },
+    "RouteToTeam": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "${OperationsRoutingTopicArn}",
+        "Message.$": "$.classification.Payload"
+      },
+      "End": true
+    }
+  }
+}
