@@ -1,0 +1,13 @@
+{
+  "test_samples": 50,
+  "category_accuracy": 0.92,
+  "category_macro_f1": 0.918,
+  "severity_accuracy_hybrid": 0.84,
+  "severity_macro_f1_hybrid": 0.838,
+  "human_review_rate": 0.38,
+  "automatic_route_rate": 0.62,
+  "automatic_route_category_accuracy": 1.0,
+  "mean_local_batch_latency_ms": 1.945,
+  "mean_local_per_incident_latency_ms": 0.0389,
+  "p95_local_batch_latency_ms": 2.411
+}
