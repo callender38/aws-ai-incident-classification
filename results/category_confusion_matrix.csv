@@ -1,0 +1,6 @@
+,compute,database,network,security,storage
+compute,8,1,1,0,0
+database,0,10,0,0,0
+network,0,0,10,0,0
+security,0,0,0,10,0
+storage,1,0,1,0,8
